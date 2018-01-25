@@ -1,18 +1,28 @@
 package com.oy.bookmark.dao.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import org.hibernate.boot.registry.selector.spi.StrategyCreator;
-
+@Entity
+@Table(name="group")
 public class Group {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_group")
 	private Integer id_group;
 	private String name;
+	@ManyToMany(mappedBy="groups")
+	private List<User> users;
+	
 	public Integer getId_group() {
 		return id_group;
 	}
