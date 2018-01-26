@@ -16,14 +16,29 @@ public class MainJPA {
 		EntityTransaction transac=em.getTransaction();
 		transac.begin();
 		User user=new User();
-		List <Group> group = new  ArrayList<Group>();
+		Group group = new Group();
+		Group group1 = new Group();
+		group.setName("etudiant");
+		group1.setName("Enseignant");
+		
+		
 		user.setUsername("ouerdia");
 		user.setEmail("ouerdiayk@yahoo.fr");
 		user.setPassword("doudou");
 		user.setValid(true);
-		user.setGroups(group);
+		
+		em.persist(group);
+		em.persist(group1);
+		Group group2 = em.find(Group.class, 1);
+		Group group3 = em.find(Group.class, 2);
+		List <Group> groups = new  ArrayList<Group>();
+		groups.add(group2);
+		groups.add(group3);
+		user.setGroups(groups);
 		em.persist(user);
 		transac.commit();
+		
+		
 		em.close();
 		emf.close();
 		

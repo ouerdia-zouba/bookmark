@@ -6,10 +6,11 @@
     <persistence-unit name="bookmark">
     
     <class>com.oy.bookmark.dao.model.User</class>
-    
+    <class>com.oy.bookmark.dao.model.Group</class>
+    <class>com.oy.bookmark.dao.model.Bookmark</class>
         <properties>
             <property name="hibernate.archive.autodetection" value="class" />
-            <!-- <property name="hibernate.show_sql" value="true" /> -->
+            <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
  
             <!-- Configuration de la  BDD -->

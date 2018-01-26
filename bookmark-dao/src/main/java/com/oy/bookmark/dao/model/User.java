@@ -2,7 +2,7 @@ package com.oy.bookmark.dao.model;
 
 import java.io.Serializable;
 import java.util.List;
-
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,7 @@ public class User implements Serializable{
 	name="group_user", 
 	joinColumns=@JoinColumn(name="id_user", referencedColumnName="id_user"),
 	inverseJoinColumns=@JoinColumn(name="id_group", referencedColumnName="id_group"))
+
 	private List<Group> groups;
 	
 	
