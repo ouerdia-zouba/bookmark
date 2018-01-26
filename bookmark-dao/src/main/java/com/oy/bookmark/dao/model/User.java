@@ -21,7 +21,7 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_user")
-	private Integer id_user;
+	private Integer idUser;
 	private String username;
 	private String email;
 	private String password;
@@ -41,11 +41,11 @@ public class User implements Serializable{
 	public void setGroups(List<Group> groups) {
 		this.groups = groups;
 	}
-	public Integer getId_user() {
-		return id_user;
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setId_user(Integer id_user) {
-		this.id_user = id_user;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
 	public User() {
 		super();

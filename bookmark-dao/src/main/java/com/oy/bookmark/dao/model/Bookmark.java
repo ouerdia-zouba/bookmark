@@ -15,18 +15,18 @@ public class Bookmark {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_bokmark")
-	private Integer id_bookmark;
+	private Integer idBookmark;
 	private String name;
 	private String url;
 	private String comment;
 	@JoinColumn(name="id_group",referencedColumnName="id_group")//on pourra enlever referencedColumnName
 	@ManyToOne
 	private Group group;
-	public Integer getId_bookmark() {
-		return id_bookmark;
+	public Integer getIdBookmark() {
+		return idBookmark;
 	}
-	public void setId_bookmark(Integer id_bookmark) {
-		this.id_bookmark = id_bookmark;
+	public void setIdBBookmark(Integer idBookmark) {
+		this.idBookmark = idBookmark;
 	}
 	public String getName() {
 		return name;

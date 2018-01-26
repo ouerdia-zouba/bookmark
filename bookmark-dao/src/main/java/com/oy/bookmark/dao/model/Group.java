@@ -22,16 +22,16 @@ public class Group implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_group")
-	private Integer id_group;
+	private Integer idGroup;
 	private String name;
 	@ManyToMany(mappedBy="groups")
 	private List<User> users;
 	
-	public Integer getId_group() {
-		return id_group;
+	public Integer getIdGroup() {
+		return idGroup;
 	}
-	public void setId_group(Integer id_group) {
-		this.id_group = id_group;
+	public void setIdGroup(Integer idGroup) {
+		this.idGroup = idGroup;
 	}
 	public String getName() {
 		return name;
