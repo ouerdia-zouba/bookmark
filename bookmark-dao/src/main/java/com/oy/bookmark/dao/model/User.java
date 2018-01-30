@@ -2,7 +2,6 @@ package com.oy.bookmark.dao.model;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Columns;
 @Entity
 @Table(name="user")
 public class User implements Serializable{
@@ -49,6 +46,14 @@ public class User implements Serializable{
 	}
 	public User() {
 		super();
+	}
+	
+	public User(String username, String email, String password, Boolean valid) {
+		super();
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.valid = valid;
 	}
 	public String getUsername() {
 		return username;

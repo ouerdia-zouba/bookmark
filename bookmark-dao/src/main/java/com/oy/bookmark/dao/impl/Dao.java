@@ -10,5 +10,13 @@ public class Dao {
 		EntityManagerFactory emf= Persistence.createEntityManagerFactory("bookmark");
 		 em=emf.createEntityManager();
 	}
+	public EntityManager getEm() {
+		return em;
+	}
+	public void setEm(EntityManager em) {
+		this.em = em;
+	}
+	
+	
 
 }
