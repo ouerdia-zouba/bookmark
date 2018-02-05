@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 22 jan. 2018 à 12:50
+-- Généré le :  lun. 05 fév. 2018 à 17:28
 -- Version du serveur :  10.1.28-MariaDB
 -- Version de PHP :  7.1.11
 
@@ -39,12 +39,12 @@ CREATE TABLE `bookmark` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `group`
+-- Structure de la table `groupe`
 --
 
-CREATE TABLE `group` (
-  `id_goup` int(11) NOT NULL COMMENT 'Identifiant du groupe',
-  `name` varchar(254) NOT NULL COMMENT 'nom du groupe'
+CREATE TABLE `groupe` (
+  `id_group` int(11) NOT NULL,
+  `name` varchar(254) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -84,10 +84,10 @@ ALTER TABLE `bookmark`
   ADD KEY `id_group` (`id_group`);
 
 --
--- Index pour la table `group`
+-- Index pour la table `groupe`
 --
-ALTER TABLE `group`
-  ADD PRIMARY KEY (`id_goup`);
+ALTER TABLE `groupe`
+  ADD PRIMARY KEY (`id_group`);
 
 --
 -- Index pour la table `group_user`
@@ -100,7 +100,8 @@ ALTER TABLE `group_user`
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -113,16 +114,16 @@ ALTER TABLE `bookmark`
   MODIFY `id_bookmark` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifiant du favoris';
 
 --
--- AUTO_INCREMENT pour la table `group`
+-- AUTO_INCREMENT pour la table `groupe`
 --
-ALTER TABLE `group`
-  MODIFY `id_goup` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifiant du groupe';
+ALTER TABLE `groupe`
+  MODIFY `id_group` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de l’utilisateur';
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Identifiant de l’utilisateur', AUTO_INCREMENT=78;
 
 --
 -- Contraintes pour les tables déchargées
@@ -132,13 +133,13 @@ ALTER TABLE `user`
 -- Contraintes pour la table `bookmark`
 --
 ALTER TABLE `bookmark`
-  ADD CONSTRAINT `bookmark_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id_goup`);
+  ADD CONSTRAINT `bookmark_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `groupe` (`id_group`);
 
 --
 -- Contraintes pour la table `group_user`
 --
 ALTER TABLE `group_user`
-  ADD CONSTRAINT `group_user_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `group` (`id_goup`),
+  ADD CONSTRAINT `group_user_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `groupe` (`id_group`),
   ADD CONSTRAINT `group_user_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
