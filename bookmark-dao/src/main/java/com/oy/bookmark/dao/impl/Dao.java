@@ -6,17 +6,18 @@ import javax.persistence.Persistence;
 
 public class Dao {
 	protected EntityManager em;
+
 	public Dao() {
-		EntityManagerFactory emf= Persistence.createEntityManagerFactory("bookmark");
-		 em=emf.createEntityManager();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("bookmark");
+		em = emf.createEntityManager();
 	}
+
 	public EntityManager getEm() {
 		return em;
 	}
+
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
-	
-	
 
 }

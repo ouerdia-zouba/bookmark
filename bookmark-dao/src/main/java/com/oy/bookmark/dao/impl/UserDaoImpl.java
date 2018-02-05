@@ -35,10 +35,13 @@ public class UserDaoImpl extends Dao implements UserDao {
 		return user;
 	}
 
-	public void affiherUser() {
-		// TODO Auto-generated method stub
-
+	public User findUser(Integer idUser) {
+		User user=em.find(User.class, idUser);
+	return user;
 	}
+		
+
+	
 
 	public User modifierUser(User user) {
 		//Query query = em.createQuery("select u from User u where u.id_user=:idUser");
@@ -51,8 +54,27 @@ public class UserDaoImpl extends Dao implements UserDao {
 	}
 
 	public void supprimerUser(Integer idUser) {
-		// TODO Auto-generated method stub
+		User user=em.find(User.class, idUser);
+		em.remove(user);
+	}
 
+	public List<User> searchUser(String pattern_email) {
+		Query query = em.createQuery("select u from User u where u.email like :modele ");
+		query.setParameter("modele", "%"+pattern_email+"%");
+		List<User> users = query.getResultList();
+		return  users;
+		
+	}
+
+	public User checkEmailUser(String email) {
+	Query query = em.createQuery("select u from User u where u.email=:mail");
+	query.setParameter("mail", email);
+	User user= null;
+	if(!query.getResultList().isEmpty()) {
+		user = (User) query.getResultList().get(0); 
+	}
+	return user;
+	
 	}
 
 

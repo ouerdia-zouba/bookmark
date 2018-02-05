@@ -9,24 +9,27 @@ public class BookmarkDaoImpl extends Dao implements BookmarkDao {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Bookmark creer(Bookmark bookmark) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void affiherBookmark() {
-		// TODO Auto-generated method stub
-		
+	public Bookmark creerBookmark(Bookmark bookmark) {
+		em.persist(bookmark);
+		return bookmark;
 	}
 
 	public Bookmark modifierBookmark(Bookmark bookmark) {
-		// TODO Auto-generated method stub
-		return null;
+		Bookmark bookmarkDB = em.find(Bookmark.class, bookmark.getIdBookmark());
+		bookmarkDB.setName(bookmark.getName());
+		return bookmarkDB;
+
 	}
 
 	public void supprimerBookmark(Integer idBookmark) {
-		// TODO Auto-generated method stub
-		
+		Bookmark bookmark = em.find(Bookmark.class, idBookmark);
+		em.remove(bookmark);
+
+	}
+
+	public Bookmark findBookmark(Integer idBookmark) {
+		Bookmark bookmark = em.find(Bookmark.class, idBookmark);
+		return bookmark;
 	}
 
 }
